@@ -13,14 +13,14 @@ public class ShowEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long showId;
 
-    @Column(name = "date", columnDefinition = "TIMESTAMP")
-    private  LocalDateTime date;
+   // @Column(name = "date", columnDefinition = "TIMESTAMP")
+    private  String date;
 
-    @Column(name = "start_time", columnDefinition = "TIMESTAMP")
-    private LocalDateTime startTime;
+   // @Column(name = "start_time", columnDefinition = "TIMESTAMP")
+    private String startTime;
 
-    @Column(name = "end_time", columnDefinition = "TIMESTAMP")
-    private LocalDateTime endTime;
+   // @Column(name = "end_time", columnDefinition = "TIMESTAMP")
+    private String endTime;
 
     @ManyToOne
     @JoinColumn(name = "cinema_id")
@@ -40,19 +40,19 @@ public class ShowEntity {
         this.showId = showId;
     }
 
-    public LocalDateTime getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 
@@ -72,11 +72,11 @@ public class ShowEntity {
         this.movieEntity = movieEntity;
     }
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }

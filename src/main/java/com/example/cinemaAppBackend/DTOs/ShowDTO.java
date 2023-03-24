@@ -14,14 +14,14 @@ public class ShowDTO {
 
     private long showId;
 
-    private  LocalDateTime date;
+    private  String date;
     @NotNull
     @NotEmpty(message = "start time required")
-    private LocalDateTime startTime;
+    private String startTime;
 
     @NotNull
     @NotEmpty(message = "end time required")
-    private LocalDateTime endTime;
+    private String endTime;
 
     @NotNull
     @NotEmpty(message = "cinema Id required")
@@ -39,27 +39,27 @@ public class ShowDTO {
         this.showId = showId;
     }
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public LocalDateTime getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 
@@ -76,6 +76,17 @@ public class ShowDTO {
     }
 
     public void setMovieId(long movieId) {
+        this.movieId = movieId;
+    }
+
+    public ShowDTO(){
+
+    }
+    public ShowDTO(String date, String startTime, String endTime, int cinemaId, long movieId) {
+        this.date = date;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.cinemaId = cinemaId;
         this.movieId = movieId;
     }
 }

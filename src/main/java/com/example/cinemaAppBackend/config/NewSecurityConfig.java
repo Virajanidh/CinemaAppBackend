@@ -68,7 +68,7 @@ public class NewSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/user/registration","/user/**","hello").permitAll() // Allow any user to access this endpoint
                 .antMatchers("/login").authenticated() // Only authenticated users can access this endpoint
-                .antMatchers("/movie","/movie/**","/show","/seat").hasAuthority("USER") // Requires "USER" authority for these endpoints
+                .antMatchers("/movie","/movie/**","/show","/seat","movie/cinema/**").hasAuthority("USER") // Requires "USER" authority for these endpoints
                 .anyRequest().authenticated() // All other requests require authentication
                 .and()
                 .httpBasic();

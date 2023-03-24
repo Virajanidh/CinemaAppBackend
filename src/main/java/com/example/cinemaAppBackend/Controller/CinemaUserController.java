@@ -6,6 +6,7 @@ import com.example.cinemaAppBackend.JPA.CinemaUserEntity;
 import com.example.cinemaAppBackend.Mappers.CinemaUserMapper;
 import com.example.cinemaAppBackend.Services.CinemaUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -32,19 +33,25 @@ public class CinemaUserController {
     }
 
 
+//    @CrossOrigin
+//    @PostMapping
+//    public CinemaUserEntity registerUser(@RequestBody CinemaUserDTO cinemaUserDTO){
+//        try{
+//           return cinemaUserService.register(cinemaUserDTO);
+//
+//        } catch (Exception e){
+//            CinemaUserEntity temp =new CinemaUserEntity();
+//            System.out.println(e);
+//            //return temp;
+//        }
+//
+//
+//    }
+
     @CrossOrigin
     @PostMapping
-    public CinemaUserEntity registerUser(@RequestBody CinemaUserDTO cinemaUserDTO){
-        try{
-           return cinemaUserService.register(cinemaUserDTO);
-
-        } catch (Exception e){
-            CinemaUserEntity temp =new CinemaUserEntity();
-            System.out.println(e);
-            return temp;
-        }
-
-
+    public ResponseEntity<?> registerUser(@RequestBody CinemaUserDTO cinemaUserDTO){
+            return cinemaUserService.register(cinemaUserDTO);
     }
 
     @PutMapping("/{id}")

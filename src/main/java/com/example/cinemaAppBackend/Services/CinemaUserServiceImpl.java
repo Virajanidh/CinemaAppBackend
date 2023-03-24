@@ -9,6 +9,7 @@ import com.example.cinemaAppBackend.Mappers.CinemaUserMapper;
 import com.example.cinemaAppBackend.Repository.CinemaUserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -29,15 +30,17 @@ public class CinemaUserServiceImpl implements CinemaUserService {
     }
 
     @Override
-    public CinemaUserEntity register(CinemaUserDTO cinemaUserDTO) throws UserAlreadyExistException{
+    public ResponseEntity<?> register(CinemaUserDTO cinemaUserDTO) throws UserAlreadyExistException{
         if(checkIfUserExist(cinemaUserDTO.getEmail())){
-            throw new UserAlreadyExistException("User already exists for this email");
+            String errorMessage = "Email address already exists";
+            return ResponseEntity.badRequest().body(errorMessage);
+            // throw new UserAlreadyExistException("User already exists for this email");
         }
         CinemaUserEntity cinemaUserEntity =new CinemaUserEntity();
         //BeanUtils.copyProperties(cinemaUserDTO, cinemaUserEntity);
         cinemaUserEntity = cinemaUserMapper.mapIn(cinemaUserDTO);
         cinemaUserRepository.save(cinemaUserEntity);
-        return  cinemaUserEntity;
+        return  ResponseEntity.ok(cinemaUserEntity);
     }
 
     @Override

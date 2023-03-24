@@ -61,6 +61,11 @@ public class MovieController {
         return movieService.deleteMovie(id);
     }
 
+    @GetMapping("/movie/cinema/{cinemaId}")
+    public List<MovieEntity> getMovieFromCinema(@PathVariable("cinemaId") int cinemaId){
+        return movieService.getMovieFromCinema(cinemaId);
+    }
+
 }
 
 

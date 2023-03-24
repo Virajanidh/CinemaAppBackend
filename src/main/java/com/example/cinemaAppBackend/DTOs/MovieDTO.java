@@ -22,11 +22,16 @@ public class MovieDTO {
     private  String country;
     @NotNull
     @NotEmpty(message = "release date required")
-    private LocalDateTime releaseDate;
+    private String releaseDate;
     @NotNull
     @NotEmpty(message = "movie duration required")
     private String movieDuration;
 
+    private List<String> showDays;
+
+    private List<List<String>> showTimes;
+
+    private String currentCinemaUserid;
     private List<ShowDTO> showDTOList;
 
     public String getTitle() {
@@ -61,11 +66,11 @@ public class MovieDTO {
         this.country = country;
     }
 
-    public LocalDateTime getReleaseDate() {
+    public String getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(LocalDateTime releaseDate) {
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 
@@ -83,6 +88,30 @@ public class MovieDTO {
 
     public void setShowDTOList(List<ShowDTO> showDTOList) {
         this.showDTOList = showDTOList;
+    }
+
+    public List<String> getShowDays() {
+        return showDays;
+    }
+
+    public void setShowDays(List<String> showDays) {
+        this.showDays = showDays;
+    }
+
+    public List<List<String>> getShowTimes() {
+        return showTimes;
+    }
+
+    public void setShowTimes(List<List<String>> showTimes) {
+        this.showTimes = showTimes;
+    }
+
+    public String getCurrentCinemaUserid() {
+        return currentCinemaUserid;
+    }
+
+    public void setCurrentCinemaUserid(String currentCinemaUserid) {
+        this.currentCinemaUserid = currentCinemaUserid;
     }
 
     @Override

@@ -27,13 +27,13 @@ public class MovieMapper {
 
         List<ShowEntity> showEntityList = null;
 
-        if(movieDTO.getShowDTOList() !=null){
-            for (ShowDTO element : movieDTO.getShowDTOList()) {
-                ShowEntity  temp2 =new ShowEntity();
-                temp2 = showMapper.mapIn(element);
-                showEntityList.add(temp2);
-            }
-        }
+//        if(movieDTO.getShowDTOList() !=null){
+//            for (ShowDTO element : movieDTO.getShowDTOList()) {
+//                ShowEntity  temp2 =new ShowEntity();
+//                temp2 = showMapper.mapIn(element);
+//                showEntityList.add(temp2);
+//            }
+//        }
 
 
         temp.setShowEntityList(showEntityList);
@@ -50,13 +50,13 @@ public class MovieMapper {
         temp.setReleaseDate(movieEntity.getReleaseDate());
         List<ShowDTO> showDTOList = null;
 
-        if(movieEntity.getShowEntityList() !=null) {
-            for (ShowEntity element : movieEntity.getShowEntityList()) {
-                ShowDTO temp2 = new ShowDTO();
-                temp2 = showMapper.mapOut(element);
-                showDTOList.add(temp2);
-            }
-        }
+//        if(movieEntity.getShowEntityList() !=null) {
+//            for (ShowEntity element : movieEntity.getShowEntityList()) {
+//                ShowDTO temp2 = new ShowDTO();
+//                temp2 = showMapper.mapOut(element);
+//                showDTOList.add(temp2);
+//            }
+//        }
 
         temp.setShowDTOList(showDTOList);
 

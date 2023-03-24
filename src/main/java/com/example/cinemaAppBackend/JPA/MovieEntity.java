@@ -20,8 +20,8 @@ public class MovieEntity {
     private  String language;
     private  String country;
     private  String movieDuration;
-    @Column(name = "release_date", columnDefinition = "TIMESTAMP")
-    private LocalDateTime releaseDate;
+   // @Column(name = "release_date", columnDefinition = "TIMESTAMP")
+    private String releaseDate;
     //@JsonManagedReference
     //@OneToMany(mappedBy = "movieEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
@@ -73,11 +73,11 @@ public class MovieEntity {
         this.country = country;
     }
 
-    public LocalDateTime getReleaseDate() {
+    public String getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(LocalDateTime releaseDate) {
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 
