@@ -1,6 +1,7 @@
 package com.example.cinemaAppBackend.Mappers;
 
 import com.example.cinemaAppBackend.DTOs.SeatDTO;
+import com.example.cinemaAppBackend.Enums;
 import com.example.cinemaAppBackend.JPA.CinemaUserEntity;
 import com.example.cinemaAppBackend.JPA.SeatEntity;
 import com.example.cinemaAppBackend.Repository.CinemaUserRepository;
@@ -14,13 +15,13 @@ public class SeatMapper {
 
     @Autowired
     private CinemaUserRepository cinemaUserRepository;
-    public SeatEntity mapIn(SeatDTO seatDTO){
+
+    public SeatEntity mapIn(Enums.SeatType seatType, int cinemaId, long noOfSeats){
         SeatEntity temp =new SeatEntity();
-        temp.setNoOfSeats(seatDTO.getNoOfSeats());
-        temp.setSeatType(seatDTO.getSeatType());
+        temp.setNoOfSeats(noOfSeats);
+        temp.setSeatType(seatType);
 
-
-        Optional cinemaU= cinemaUserRepository.findById(seatDTO.getCinemaId());
+        Optional cinemaU= cinemaUserRepository.findById(cinemaId);
         if (cinemaU.isPresent()) {
             CinemaUserEntity cinemaUser = (CinemaUserEntity) cinemaU.get();
             temp.setCinemaUserEntity(cinemaUser);
@@ -28,7 +29,9 @@ public class SeatMapper {
             // Handle the case when cinemaId is not found in the database
         }
 
-
         return temp;
     }
+
+//
+
 }

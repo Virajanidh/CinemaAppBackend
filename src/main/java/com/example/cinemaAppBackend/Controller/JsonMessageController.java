@@ -1,12 +1,14 @@
 package com.example.cinemaAppBackend.Controller;
 
+import com.example.cinemaAppBackend.DTOs.CustomerDTO;
 import com.example.cinemaAppBackend.Kafka.JsonKafkaProducer;
 import com.example.cinemaAppBackend.DTOs.CinemaUser12;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/kafka")
+@RequestMapping("/kafka")
 public class JsonMessageController {
 
     private JsonKafkaProducer jsonKafkaProducer;
@@ -20,4 +22,15 @@ public class JsonMessageController {
         jsonKafkaProducer.sendMessage(user);
         return ResponseEntity.ok("Message sent to Kafka topic");
     }
+
+    //dummy endpoint
+    @PostMapping("/dummyCustomer")
+    public ResponseEntity<String> dummyPost(@RequestBody CustomerDTO customerDTO){
+        jsonKafkaProducer.sendCustomerData(customerDTO);
+        return ResponseEntity.ok("Message sent to Kafka topic");
+    }
+
+
+
+
 }

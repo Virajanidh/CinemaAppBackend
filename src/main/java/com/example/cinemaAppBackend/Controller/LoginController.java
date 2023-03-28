@@ -34,6 +34,11 @@ public class LoginController {
         return cinemaUserService.getProfileInfo(username);
     }
 
+    @GetMapping("/logout/success")
+    public String logoutSuccess() {
+        return "logout success";
+    }
+
     @PutMapping("login/profile/{id}")
     public CinemaUserEntity updateProfile(@PathVariable("id") int id, @RequestBody CinemaUserDTO cinemaUserDTO) {
       CinemaUserEntity temp = new CinemaUserEntity();

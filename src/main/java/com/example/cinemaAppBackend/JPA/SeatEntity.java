@@ -3,7 +3,7 @@ package com.example.cinemaAppBackend.JPA;
 import com.example.cinemaAppBackend.Enums;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Entity
 @Table(name="seat")
@@ -13,7 +13,7 @@ public class SeatEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long seatId;
-    @Enumerated(EnumType.ORDINAL)
+
     private Enums.SeatType seatType;
     @ManyToOne
     @JoinColumn(name = "cinema_id")
@@ -52,5 +52,15 @@ public class SeatEntity {
     public void setNoOfSeats(long noOfSeats) {
         this.noOfSeats = noOfSeats;
     }
-}
+    public SeatEntity(){}
+
+    }
+
+//    public SeatEntity(long seatId, Enums.SeatType seatType, CinemaUserEntity cinemaUserEntity, long noOfSeats) {
+//        this.seatId = seatId;
+//        this.seatType = seatType;
+//        this.cinemaUserEntity = cinemaUserEntity;
+//        this.noOfSeats = noOfSeats;
+//    }
+
 

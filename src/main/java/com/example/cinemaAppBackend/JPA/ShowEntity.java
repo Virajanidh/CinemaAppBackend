@@ -1,9 +1,11 @@
 package com.example.cinemaAppBackend.JPA;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name="show")
@@ -31,6 +33,14 @@ public class ShowEntity {
     @JoinColumn(name = "movie_id")
   //  @JsonBackReference
     private  MovieEntity movieEntity;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "showEntity",cascade = CascadeType.ALL)
+    private List<BookingEntity> bookingEntityList;
+
+
+//    @OneToOne(mappedBy = "showEntity")
+//    private BookingEntity bookingEntity;
 
     public long getShowId() {
         return showId;

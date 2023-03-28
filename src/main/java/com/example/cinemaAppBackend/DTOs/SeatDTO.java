@@ -2,6 +2,7 @@ package com.example.cinemaAppBackend.DTOs;
 
 import com.example.cinemaAppBackend.Enums;
 import com.example.cinemaAppBackend.JPA.CinemaUserEntity;
+import com.fasterxml.jackson.databind.JsonNode;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -9,27 +10,22 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 public class SeatDTO {
 
-    @NotNull
-    @NotEmpty(message = "Seat type required")
-    @Enumerated(EnumType.ORDINAL)
-    private Enums.SeatType seatType;
+//    @NotNull
+//    @NotEmpty(message = "Seat type required")
+//    @Enumerated(EnumType.ORDINAL)
+//    private Enums.SeatType seatType;
     @NotNull
     @NotEmpty(message = "Movie Id required")
     private int cinemaId;
-    @NotNull
-    @NotEmpty(message = "Number of seats required")
-    private long noOfSeats;
 
-    public Enums.SeatType getSeatType() {
-        return seatType;
-    }
+    private long movieId;
 
-    public void setSeatType(Enums.SeatType seatType) {
-        this.seatType = seatType;
-    }
+
+    private List<JsonNode> seatDetails;
 
     public int getCinemaId() {
         return cinemaId;
@@ -39,11 +35,43 @@ public class SeatDTO {
         this.cinemaId = cinemaId;
     }
 
-    public long getNoOfSeats() {
-        return noOfSeats;
+    public long getMovieId() {
+        return movieId;
     }
 
-    public void setNoOfSeats(long noOfSeats) {
-        this.noOfSeats = noOfSeats;
+    public void setMovieId(long movieId) {
+        this.movieId = movieId;
+    }
+
+    public List<JsonNode> getSeatDetails() {
+        return seatDetails;
+    }
+
+    public void setSeatDetails(List<JsonNode> seatDetails) {
+        this.seatDetails = seatDetails;
     }
 }
+
+/*const MyTable = () => {
+  const [dataSource, setDataSource] = useState(data);
+
+  const handleSeatChange = (value, key) => {
+    const newData = [...dataSource];
+    const index = newData.findIndex((item) => key === item.key);
+    const item = newData[index];
+    newData.splice(index, 1, { ...item, noOfSeats: value });
+    setDataSource(newData);
+  };
+
+  const handlePriceChange = (value, key) => {
+    const newData = [...dataSource];
+    const index = newData.findIndex((item) => key === item.key);
+    const item = newData[index];
+    newData.splice(index, 1, { ...item, price: value });
+    setDataSource(newData);
+  };
+
+  return <Table dataSource={dataSource} columns={columns} />;
+};
+
+export default MyTable;*/

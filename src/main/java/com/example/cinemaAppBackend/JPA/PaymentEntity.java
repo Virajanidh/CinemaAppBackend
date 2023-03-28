@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name="payment")
 public class PaymentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,8 +15,8 @@ public class PaymentEntity {
     @Column(name = "payment_date", columnDefinition = "TIMESTAMP")
     private LocalDateTime paymentDate;
 
-    @OneToOne(mappedBy = "paymentEntity")
-    private BookingEntity bookingEntity;
+//    @OneToOne(mappedBy = "paymentEntity")
+//    private BookingEntity bookingEntity;
 
     private String paymentMethod;
 
@@ -42,13 +44,13 @@ public class PaymentEntity {
         this.paymentDate = paymentDate;
     }
 
-    public BookingEntity getBookingEntity() {
-        return bookingEntity;
-    }
-
-    public void setBookingEntity(BookingEntity bookingEntity) {
-        this.bookingEntity = bookingEntity;
-    }
+//    public BookingEntity getBookingEntity() {
+//        return bookingEntity;
+//    }
+//
+//    public void setBookingEntity(BookingEntity bookingEntity) {
+//        this.bookingEntity = bookingEntity;
+//    }
 
     public String getPaymentMethod() {
         return paymentMethod;
