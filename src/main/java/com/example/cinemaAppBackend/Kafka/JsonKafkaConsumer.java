@@ -71,6 +71,11 @@ public class JsonKafkaConsumer {
         long customerId=customerEntity.getCustomerId();
         if(checkIfPaymentExists(customerDTO.getPaymentId())){
             String errorMessage = "Payment already used";
+            Message<ReserveDTO> message = MessageBuilder
+                    .withPayload(new ReserveDTO(customerDTO.getNic(),"Reservation cannot proceed.Payment Id already used",customerDTO.getPaymentId()))
+                    .setHeader(KafkaHeaders.TOPIC, "Bookings_Confirm")
+                    .build();
+            kafkaTemplate.send(message);
             return ResponseEntity.badRequest().body(errorMessage);
             // throw new UserAlreadyExistException("User already exists for this email");
         }

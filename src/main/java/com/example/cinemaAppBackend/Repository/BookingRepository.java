@@ -18,7 +18,7 @@ public interface BookingRepository extends JpaRepository<BookingEntity,Long> {
             "FROM booking where show_id= :shId and seat_id= :sId and cinema_id= :cId",nativeQuery = true)
     public int getTotalBookedSeats(@Param("shId") long showId,@Param("sId") long seatId,@Param("cId") int cinemaId);
 
-    @Query(value="select no_of_seats from seat where seat_id= :sId and cinema_id= :cId",nativeQuery = true)
+    @Query(value="select COALESCE( no_of_seats,0) from seat where seat_id= :sId and cinema_id= :cId",nativeQuery = true)
     public int getDefaultSeatAvailability(@Param("sId") long seatId,@Param("cId") int cinemaId);
 
     @Query(value="\n" +
