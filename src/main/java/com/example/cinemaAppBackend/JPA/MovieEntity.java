@@ -28,6 +28,16 @@ public class MovieEntity {
     @OneToMany(mappedBy = "movieEntity",cascade = CascadeType.ALL)
     private List<ShowEntity> showEntityList;
 
+    private String imgUrl;
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
     public MovieEntity() {
 
     }

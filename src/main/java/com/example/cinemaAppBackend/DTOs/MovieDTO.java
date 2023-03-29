@@ -29,6 +29,16 @@ public class MovieDTO {
 
     private List<String> showDays;
 
+    private String imgUrl;
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
     private List<List<String>> showTimes;
 
     private String currentCinemaUserid;

@@ -38,7 +38,7 @@ public interface MovieRepository extends JpaRepository<MovieEntity,Long> {
 //    )
     @Query(value="select distinct \n" +
             "m.title, m.description,m.country,\n" +
-            "m.language,m.movie_duration,m.movie_id,m.language,m.release_date\n" +
+            "m.language,m.movie_duration,m.movie_id,m.language,m.release_date,m.img_url\n" +
             "from movie as m ,show,cinema_user\n" +
             "where m.movie_Id=show.movie_id \n" +
             "and show.cinema_Id=cinema_user.cinema_Id \n" +

@@ -16,6 +16,7 @@ public class MovieMapper {
 
     @Autowired
     private ShowMapper showMapper;
+
     public MovieEntity mapIn(MovieDTO movieDTO){
         MovieEntity temp = new MovieEntity();
         temp.setCountry(movieDTO.getCountry());
@@ -24,6 +25,7 @@ public class MovieMapper {
         temp.setMovieDuration(movieDTO.getMovieDuration());
         temp.setTitle(movieDTO.getTitle());
         temp.setReleaseDate(movieDTO.getReleaseDate());
+        temp.setImgUrl(movieDTO.getImgUrl());
 
         List<ShowEntity> showEntityList = null;
 
